@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 
 	"github.com/shiguanghuxian/txai"
@@ -11,10 +12,8 @@ func main() {
 	log.SetFlags(log.Lshortfile | log.LstdFlags)
 
 	txAi := txai.New("appid", "appkey", true)
-	val, err := txAi.OcrIdcardocrForPath(0, "../img/id_test.jpg")
+	val, err := txAi.OcrDriverlicenseocrForPath(0, "../../img/ocr_driverlicenseocr.jpg")
 	log.Println(err)
-	// js, _ := json.Marshal(val)
-	// log.Println(string(js))
-	log.Println("姓名：", val.Data.Name, "身份证号：", val.Data.Id)
-
+	js, _ := json.Marshal(val)
+	log.Println(string(js))
 }

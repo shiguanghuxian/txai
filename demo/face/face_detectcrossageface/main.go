@@ -12,7 +12,7 @@ func main() {
 	log.SetFlags(log.Lshortfile | log.LstdFlags)
 
 	txAi := txai.New("appid", "appkey", true)
-	val, err := txAi.OcrBcocrForPath("../img/ocr_bcocr.jpg")
+	val, err := txAi.FaceDetectcrossagefaceForPath("../../img/source_image.jpg", "../img/target_image.jpg")
 	log.Println(err)
 	js, _ := json.Marshal(val)
 	log.Println(string(js))

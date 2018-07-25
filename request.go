@@ -29,6 +29,8 @@ func (ai *TxAi) RequestAPI(uri string, u url.Values, response BaseResponseInterf
 	if err != nil {
 		return err
 	}
+	// log.Println(u)
+	// log.Println(string(body))
 	// 解析json数据
 	err = json.Unmarshal(body, response)
 	if err != nil {

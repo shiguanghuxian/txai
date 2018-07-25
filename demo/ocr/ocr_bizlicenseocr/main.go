@@ -12,7 +12,7 @@ func main() {
 	log.SetFlags(log.Lshortfile | log.LstdFlags)
 
 	txAi := txai.New("appid", "appkey", true)
-	val, err := txAi.OcrDriverlicenseocrForPath(0, "../img/ocr_driverlicenseocr.jpg")
+	val, err := txAi.OcrBizlicenseocrForPath("../../img/ocr_bizlicenseocr.jpg")
 	log.Println(err)
 	js, _ := json.Marshal(val)
 	log.Println(string(js))
