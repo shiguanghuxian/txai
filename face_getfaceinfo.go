@@ -17,7 +17,7 @@ func (ai *TxAi) FaceGetfaceinfoForFaceId(faceId string) (*FaceGetfaceinfoRespons
 	params.Add("sign", sign)
 	// 响应结果
 	faceGetfaceinfoResponse := new(FaceGetfaceinfoResponse)
-	err := ai.RequestAPI(faceGetpersonidsURI, params, faceGetfaceinfoResponse)
+	err := ai.RequestAPI(faceGetfaceinfoURI, params, faceGetfaceinfoResponse)
 	if err != nil {
 		return nil, err
 	}
