@@ -11,8 +11,8 @@ func main() {
 	// 系统日志显示文件和行号
 	log.SetFlags(log.Lshortfile | log.LstdFlags)
 
-	txAi := txai.New("appid", "appkey", true)
-	val, err := txAi.VisionPornForPath("../img/vision_porn.jpg")
+	txAi := txai.New("1106736025", "9ea4yNLi2jrSc66y", true)
+	val, err := txAi.VisionImgtotextForPath("../../img/vision_porn.jpg", "110")
 	log.Println(err)
 	js, _ := json.Marshal(val)
 	log.Println(string(js))

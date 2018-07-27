@@ -12,7 +12,7 @@ func main() {
 	log.SetFlags(log.Lshortfile | log.LstdFlags)
 
 	txAi := txai.New("appid", "appkey", true)
-	val, err := txAi.ImageTerrorismForPath("../img/image_terrorism.jpg")
+	val, err := txAi.VisionPornForPath("../../img/vision_porn.jpg")
 	log.Println(err)
 	js, _ := json.Marshal(val)
 	log.Println(string(js))

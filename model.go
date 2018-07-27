@@ -380,3 +380,68 @@ type FaceGetfaceinfoResponse struct {
 		} `json:"face_info"`
 	} `json:"data"`
 }
+
+/* 图片识别 */
+
+// VisionScenerResponse 场景识别
+type VisionScenerResponse struct {
+	BaseResponse
+	Data struct {
+		Topk      int `json:"topk"`
+		SceneList []*struct {
+			LabelID    int     `json:"label_id"`
+			LabelName  string  `json:"label_name"` // 场景名
+			LabelConfd float64 `json:"label_confd"`
+		} `json:"scene_list"`
+	} `json:"data"`
+}
+
+// VisionObjectrResponse 物体识别
+type VisionObjectrResponse struct {
+	BaseResponse
+	Data struct {
+		Topk       int `json:"topk"`
+		ObjectList []*struct {
+			LabelID    int     `json:"label_id"`
+			LabelName  string  `json:"label_name"` // 物体名
+			LabelConfd float64 `json:"label_confd"`
+		} `json:"object_list"`
+	} `json:"data"`
+}
+
+// ImageTagResponse 图像标签识别
+type ImageTagResponse struct {
+	BaseResponse
+	Data struct {
+		TagList []struct {
+			TagConfidence int    `json:"tag_confidence"`
+			TagName       string `json:"tag_name"`
+		} `json:"tag_list"`
+	} `json:"data"`
+}
+
+// VisionImgtotextResponse  看图说话
+type VisionImgtotextResponse struct {
+	BaseResponse
+	Data struct {
+		Text string `json:"text"`
+	} `json:"data"`
+}
+
+// ImageFuzzyResponse 模糊图片检测
+type ImageFuzzyResponse struct {
+	BaseResponse
+	Data struct {
+		Fuzzy      bool    `json:"fuzzy"`
+		Confidence float64 `json:"confidence"`
+	} `json:"data"`
+}
+
+// ImageFoodResponse 美食图片识别
+type ImageFoodResponse struct {
+	BaseResponse
+	Data struct {
+		Food       bool    `json:"food"`
+		Confidence float64 `json:"confidence"`
+	} `json:"data"`
+}
