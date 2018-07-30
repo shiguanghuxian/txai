@@ -2,6 +2,7 @@ package txai
 
 import (
 	"encoding/json"
+	"errors"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -25,6 +26,9 @@ func (ai *TxAi) HttpPost(url string, u url.Values) (respBody []byte, err error) 
 	resp, err := client.Do(request)
 	if err != nil {
 		return nil, err
+	}
+	if resp.StatusCode != 200 {
+		return nil, errors.New(resp.Status)
 	}
 	respBody, err = ioutil.ReadAll(resp.Body)
 
