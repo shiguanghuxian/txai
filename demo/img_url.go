@@ -14,7 +14,7 @@ func main() {
 
 	txAi := txai.New("appid", "appkey", true)
 	txAi.SetDebug(false)
-	img, err := txAi.ImgURLToBase64("https://yyb.gtimg.com/aiplat/static/ai-demo/large/odemo-pic-2.jpg")
+	img, err := txAi.URLToBase64("https://yyb.gtimg.com/aiplat/static/ai-demo/large/odemo-pic-2.jpg")
 	if err != nil {
 		log.Println(err)
 		os.Exit(1)

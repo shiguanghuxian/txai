@@ -51,8 +51,8 @@ func (ai *TxAi) SetRequestTimeout(d time.Duration) {
 	ai.timeout = d
 }
 
-// ImgURLToBase64 读取url返回base64字符串
-func (ai *TxAi) ImgURLToBase64(imageURL string) (string, error) {
+// URLToBase64 读取url返回base64字符串
+func (ai *TxAi) URLToBase64(imageURL string) (string, error) {
 	client := http.Client{Timeout: ai.timeout}
 	resp, err := client.Get(imageURL)
 	if err != nil {

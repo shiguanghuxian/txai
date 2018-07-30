@@ -565,3 +565,68 @@ type NlpTextchatResponse struct {
 		Answer  string `json:"answer"`
 	} `json:"data"`
 }
+
+// NlpTexttransResponse 文本翻译（AI Lab）
+type NlpTexttransResponse struct {
+	BaseResponse
+	Data struct {
+		Type      LangType `json:"type"`
+		OrgText   string   `json:"org_text"`
+		TransText string   `json:"trans_text"`
+	} `json:"data"`
+}
+
+// NlpTexttranslateResponse 文本翻译（翻译君）
+type NlpTexttranslateResponse struct {
+	BaseResponse
+	Data struct {
+		SourceText string `json:"source_text"`
+		TargetText string `json:"target_text"`
+	} `json:"data"`
+}
+
+// NlpImagetranslateResponse 图片翻译
+type NlpImagetranslateResponse struct {
+	BaseResponse
+	Data struct {
+		SessionID    string `json:"session_id"`
+		ImageRecords []struct {
+			SourceText string `json:"source_text"`
+			TargetText string `json:"target_text"`
+			X          int    `json:"x"`
+			Y          int    `json:"y"`
+			Width      int    `json:"width"`
+			Height     int    `json:"height"`
+		} `json:"image_records"`
+	} `json:"data"`
+}
+
+// NlpSpeechtranslateResponse 语音翻译
+type NlpSpeechtranslateResponse struct {
+	BaseResponse
+	Data struct {
+		SessionID  string `json:"session_id"`
+		End        int    `json:"end"`
+		Seq        int    `json:"seq"`
+		SourceText string `json:"source_text"`
+		TargetText string `json:"target_text"`
+	} `json:"data"`
+}
+
+// NlpTextdetectResponse 语种识别
+type NlpTextdetectResponse struct {
+	BaseResponse
+	Data struct {
+		Lang Lang `json:"lang"`
+	} `json:"data"`
+}
+
+// AaiAsrResponse 语音识别-echo版
+type AaiAsrResponse struct {
+	BaseResponse
+	Data struct {
+		Format AaiAudioType `json:"format"`
+		Rate   int          `json:"rate"`
+		Text   string       `json:"text"`
+	} `json:"data"`
+}
