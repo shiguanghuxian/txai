@@ -15,7 +15,7 @@ func main() {
 	// 系统日志显示文件和行号
 	log.SetFlags(log.Lshortfile | log.LstdFlags)
 
-	txAi = txai.New("1106736025", "9ea4yNLi2jrSc66y", true)
+	txAi = txai.New("appid", "appkey", true)
 
 	asr() // 语音识别-echo版
 }

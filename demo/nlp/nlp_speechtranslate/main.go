@@ -11,7 +11,7 @@ func main() {
 	// 系统日志显示文件和行号
 	log.SetFlags(log.Lshortfile | log.LstdFlags)
 
-	txAi := txai.New("1106736025", "9ea4yNLi2jrSc66y", true)
+	txAi := txai.New("appid", "appkey", true)
 	val, err := txAi.NlpSpeechtranslateForPath("../../img/wxasrs.mp3", "110", txai.AudioMP3, 0, 1, txai.Zh, txai.En)
 	log.Println(err)
 	js, _ := json.Marshal(val)
