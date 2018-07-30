@@ -12,7 +12,7 @@ func main() {
 	// 系统日志显示文件和行号
 	log.SetFlags(log.Lshortfile | log.LstdFlags)
 
-	txAi := txai.New("1106736025", "9ea4yNLi2jrSc66y", true)
+	txAi := txai.New("appid", "appkey", true)
 	txAi.SetDebug(false)
 	img, err := txAi.ImgURLToBase64("https://yyb.gtimg.com/aiplat/static/ai-demo/large/odemo-pic-2.jpg")
 	if err != nil {
