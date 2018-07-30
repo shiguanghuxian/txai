@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"io/ioutil"
 	"log"
 
 	"github.com/shiguanghuxian/txai"
@@ -12,8 +13,9 @@ func main() {
 	log.SetFlags(log.Lshortfile | log.LstdFlags)
 
 	txAi := txai.New("1106736025", "9ea4yNLi2jrSc66y", true)
-	val, err := txAi.OcrBcocrForPath("../../img/ocr_bcocr.jpg")
+	val, err := txAi.PtuFacecosmeticForPath("../../img/face_detectface.jpg", 23)
 	log.Println(err)
+	ioutil.WriteFile("abc.jpg", val.Data.Image, 0655)
 	js, _ := json.Marshal(val)
 	log.Println(string(js))
 }

@@ -2,39 +2,71 @@ package txai
 
 import (
 	"crypto/md5"
+	"encoding/base64"
+	"errors"
 	"fmt"
+	"io/ioutil"
+	"net/http"
 	"net/url"
 	"strings"
 	"time"
 
 	"github.com/goroom/rand"
-	"github.com/parnurzeal/gorequest"
 )
 
-var (
+const (
 	// BaseURL 腾讯ai接口根地址
 	BaseURL = "https://api.ai.qq.com/fcgi-bin"
 )
 
 // TxAi 腾讯ai sqk
 type TxAi struct {
-	AppID   string                // AppID 从腾讯AI控制台获取
-	AppKey  string                // AppKey 从腾讯AI控制台获取
-	request *gorequest.SuperAgent // http请求对象
-	debug   bool                  // 是否调试
+	AppID   string        // AppID 从腾讯AI控制台获取
+	AppKey  string        // AppKey 从腾讯AI控制台获取
+	timeout time.Duration // http请求超时
+	debug   bool          // 是否调试
 }
 
 // New 创建一个sdk操作对象 := gorequest.New()
 func New(appID, appKey string, debug bool) *TxAi {
-	request := gorequest.New()
-	request.Debug = debug
 	txAi := &TxAi{
 		AppID:   appID,
 		AppKey:  appKey,
-		request: request,
+		timeout: 30 * time.Second,
 		debug:   debug,
 	}
 	return txAi
+}
+
+// SetDebug 设置是否调试模式
+func (ai *TxAi) SetDebug(debug bool) {
+	ai.debug = debug
+}
+
+// SetRequestTimeout 设置超时时间
+func (ai *TxAi) SetRequestTimeout(d time.Duration) {
+	if d == 0 {
+		d = 30 * time.Second
+	}
+	ai.timeout = d
+}
+
+// ImgURLToBase64 读取url返回base64字符串
+func (ai *TxAi) ImgURLToBase64(imageURL string) (string, error) {
+	client := http.Client{Timeout: ai.timeout}
+	resp, err := client.Get(imageURL)
+	if err != nil {
+		return "", err
+	}
+	if resp.StatusCode != 200 {
+		return "", errors.New(resp.Status)
+	}
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return "", err
+	}
+	img := base64.StdEncoding.EncodeToString(body)
+	return img, nil
 }
 
 // 计算签名

@@ -445,3 +445,123 @@ type ImageFoodResponse struct {
 		Confidence float64 `json:"confidence"`
 	} `json:"data"`
 }
+
+// PtuResponse 图片特效统一响应格式
+type PtuResponse struct {
+	BaseResponse
+	Data struct {
+		Image []byte `json:"image"`
+	} `json:"data"`
+}
+
+/* 自然语言处理 */
+
+// NlpWordsegResponse 分词
+type NlpWordsegResponse struct {
+	BaseResponse
+	Data struct {
+		Text       string `json:"text"`
+		BaseTokens []struct {
+			Word   string `json:"word"`
+			Offset int    `json:"offset"`
+			Length int    `json:"length"`
+		} `json:"base_tokens"`
+		MixTokens []struct {
+			Word   string `json:"word"`
+			Offset int    `json:"offset"`
+			Length int    `json:"length"`
+		} `json:"mix_tokens"`
+	} `json:"data"`
+}
+
+// NlpWordcomResponse 语义解析
+type NlpWordcomResponse struct {
+	BaseResponse
+	Data struct {
+		Text       string `json:"text"`
+		Intent     int    `json:"intent"`
+		IntentName string `json:"intent_name"`
+		ComTokens  []*struct {
+			ComType     int    `json:"com_type"`
+			ComTypeName string `json:"com_type_name"`
+			ComWord     string `json:"com_word"`
+		} `json:"com_tokens"`
+	} `json:"data"`
+}
+
+// NlpWordnerResponse 专有名词识别接口
+type NlpWordnerResponse struct {
+	BaseResponse
+	Data struct {
+		Text      string `json:"text"`
+		NerTokens []*struct {
+			Word      string   `json:"word"`
+			Offset    int      `json:"offset"`
+			Length    int      `json:"length"`
+			Types     []int    `json:"types"`
+			Weights   []int    `json:"weights"`
+			TypeNames []string `json:"type_names"`
+		} `json:"ner_tokens"`
+	} `json:"data"`
+}
+
+// NlpWordsynResponse 同义词识别
+type NlpWordsynResponse struct {
+	BaseResponse
+	Data struct {
+		Text      string `json:"text"`
+		SynTokens []struct {
+			OriWord struct {
+				Word   string `json:"word"`
+				Offset int    `json:"offset"`
+				Length int    `json:"length"`
+			} `json:"ori_word"`
+			SynWords []struct {
+				Word   string  `json:"word"`
+				Weight float64 `json:"weight"`
+			} `json:"syn_words"`
+		} `json:"syn_tokens"`
+	} `json:"data"`
+}
+
+// NlpWordposResponse 词性标注
+type NlpWordposResponse struct {
+	BaseResponse
+	Data struct {
+		Text       string `json:"text"`
+		BaseTokens []*struct {
+			Word        string `json:"word"`
+			Offset      int    `json:"offset"`
+			Length      int    `json:"length"`
+			PosCode     int    `json:"pos_code"`
+			PosCodeName string `json:"pos_code_name"`
+		} `json:"base_tokens"`
+		MixTokens []*struct {
+			Word        string `json:"word"`
+			Offset      int    `json:"offset"`
+			Length      int    `json:"length"`
+			PosCode     int    `json:"pos_code"`
+			PosCodeName string `json:"pos_code_name"`
+		} `json:"mix_tokens"`
+	} `json:"data"`
+}
+
+// NlpTextpolarResponse 情感分析
+type NlpTextpolarResponse struct {
+	BaseResponse
+	Data struct {
+		Text      string  `json:"text"`
+		Polar     int     `json:"polar"`
+		PolarName string  `json:"polar_name"`
+		Confd     float64 `json:"confd"`
+	} `json:"data"`
+}
+
+// NlpTextchatResponse 智能闲聊
+type NlpTextchatResponse struct {
+	BaseResponse
+	Data struct {
+		Session string `json:"session"`
+		Answer  string `json:"answer"`
+	} `json:"data"`
+}
