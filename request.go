@@ -65,7 +65,7 @@ func (ai *TxAi) RequestAPI(uri string, u url.Values, response BaseResponseInterf
 		return err
 	}
 	ret := response.GetRet()
-	if response.GetRet() != 0 {
+	if ret != 0 {
 		return GetError(ret)
 	}
 	return nil

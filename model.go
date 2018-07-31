@@ -630,3 +630,79 @@ type AaiAsrResponse struct {
 		Text   string       `json:"text"`
 	} `json:"data"`
 }
+
+// AaiAsrsResponse 语音识别-流式版（AI Lab）
+type AaiAsrsResponse struct {
+	BaseResponse
+	Data struct {
+		Format     int    `json:"format"`
+		Rate       int    `json:"rate"`
+		Seq        int    `json:"seq"`
+		Len        int    `json:"len"`
+		End        int    `json:"end"`
+		SpeechID   string `json:"speech_id"`
+		SpeechText string `json:"speech_text"`
+	} `json:"data"`
+}
+
+// AaiWxasrsResponse 语音识别-流式版（AI Lab）
+type AaiWxasrsResponse struct {
+	BaseResponse
+	Data struct {
+		Format     int    `json:"format"`
+		Rate       int    `json:"rate"`
+		End        int    `json:"end"`
+		SpeechID   string `json:"speech_id"`
+		SpeechText string `json:"speech_text"`
+		IsFinalRes int    `json:"is_final_res"`
+		Ack        int    `json:"ack"`
+	} `json:"data"`
+}
+
+// AaiWxasrlongResponse 长语音识别
+type AaiWxasrlongResponse struct {
+	BaseResponse
+	Data struct {
+		TaskID string `json:"task_id"`
+		Text   string `json:"text"`
+	} `json:"data"`
+}
+
+// AaiDetectkeywordResponse 关键词检索
+type AaiDetectkeywordResponse struct {
+	BaseResponse
+	Data struct {
+		Bps   int `json:"bps"`
+		Eps   int `json:"eps"`
+		IsEnd int `json:"is_end"`
+		Res   struct {
+			KeyWords []struct {
+				KeyWord string  `json:"key_word"`
+				Mbtm    int     `json:"mbtm"`
+				Metm    float64 `json:"metm"`
+				Score   int     `json:"score"`
+			} `json:"key_words"`
+			KeyWordsSize int `json:"key_words_size"`
+		} `json:"res"`
+		SegIndex int    `json:"seg_index"`
+		TaskID   string `json:"task_id"`
+	} `json:"data"`
+}
+
+// AaiTtsResponse 语音合成（AI Lab）
+type AaiTtsResponse struct {
+	BaseResponse
+	Data struct {
+		Format int    `json:"format"`
+		Speech []byte `json:"speech"`
+		Md5Sum string `json:"md5sum"`
+	} `json:"data"`
+}
+
+// AaiTtaResponse 语音合成（优图）
+type AaiTtaResponse struct {
+	BaseResponse
+	Data struct {
+		Voice []byte `json:"voice"`
+	} `json:"data"`
+}
