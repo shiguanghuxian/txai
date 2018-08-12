@@ -12,7 +12,7 @@ func main() {
 	log.SetFlags(log.Lshortfile | log.LstdFlags)
 
 	txAi := txai.New("appid", "appkey", true)
-	val, err := txAi.FaceDelpersonForPersonId("id2")
+	val, err := txAi.FaceDelpersonForPersonId("BoHuang")
 	log.Println(err)
 	js, _ := json.Marshal(val)
 	log.Println(string(js))

@@ -12,7 +12,7 @@ func main() {
 	log.SetFlags(log.Lshortfile | log.LstdFlags)
 
 	txAi := txai.New("appid", "appkey", true)
-	val, err := txAi.FaceNewpersonForPath("group1", "id2", "../../img/face_detectface.jpg", "name1", "")
+	val, err := txAi.FaceNewpersonForPath("movie", "HsuChi", "/Users/zuo/Desktop/ff/2.jpg", "舒淇", "演员|编剧")
 	log.Println(err)
 	js, _ := json.Marshal(val)
 	log.Println(string(js))

@@ -29,7 +29,7 @@ func (ai *TxAi) FaceFaceidentifyForBase64(image string, groupId string, topns ..
 	params.Add("sign", sign)
 	// 响应结果
 	faceFaceidentifyResponse := new(FaceFaceidentifyResponse)
-	err := ai.RequestAPI(faceDetectfaceURI, params, faceFaceidentifyResponse)
+	err := ai.RequestAPI(faceFaceidentifyURI, params, faceFaceidentifyResponse)
 	if err != nil {
 		return nil, err
 	}
