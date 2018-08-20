@@ -25,7 +25,7 @@ func (ai *TxAi) FaceFaceshapeForBase64(image string, modes ...int) (*FaceFacesha
 	params.Add("sign", sign)
 	// 响应结果
 	faceFaceshapeResponse := new(FaceFaceshapeResponse)
-	err := ai.RequestAPI(faceDetectfaceURI, params, faceFaceshapeResponse)
+	err := ai.RequestAPI(faceFaceshapeURI, params, faceFaceshapeResponse)
 	if err != nil {
 		return nil, err
 	}

@@ -5,8 +5,8 @@ import "github.com/axgle/mahonia"
 var (
 	nlpWordsegURI = "/nlp/nlp_wordseg"
 	nlpWordposURI = "/nlp/nlp_wordpos"
-	nlpWordner    = "/nlp/nlp_wordner"
-	nlpWordsyn    = "/nlp/nlp_wordsyn"
+	nlpWordnerURI = "/nlp/nlp_wordner"
+	nlpWordsynURI = "/nlp/nlp_wordsyn"
 )
 
 // NlpWordsegForText 分词 - 对文本进行智能分词识别，支持基础词与混排词粒度
@@ -70,7 +70,7 @@ func (ai *TxAi) NlpWordnerForText(text string) (*NlpWordnerResponse, error) {
 	params.Add("sign", sign)
 	// 响应结果
 	nlpWordnerResponse := new(NlpWordnerResponse)
-	err := ai.RequestAPI(nlpWordner, params, nlpWordnerResponse)
+	err := ai.RequestAPI(nlpWordnerURI, params, nlpWordnerResponse)
 	if err != nil {
 		return nil, err
 	}
@@ -97,7 +97,7 @@ func (ai *TxAi) NlpWordsynForText(text string) (*NlpWordsynResponse, error) {
 	params.Add("sign", sign)
 	// 响应结果
 	nlpWordsynResponse := new(NlpWordsynResponse)
-	err := ai.RequestAPI(nlpWordsyn, params, nlpWordsynResponse)
+	err := ai.RequestAPI(nlpWordsynURI, params, nlpWordsynResponse)
 	if err != nil {
 		return nil, err
 	}
