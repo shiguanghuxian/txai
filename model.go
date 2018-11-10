@@ -706,3 +706,14 @@ type AaiTtaResponse struct {
 		Voice []byte `json:"voice"`
 	} `json:"data"`
 }
+
+// AaiEvilaudioResponse 音频鉴黄
+type AaiEvilaudioResponse struct {
+	BaseResponse
+	Data struct {
+		SpeechID  string `json:"speech_id"`
+		SpeechURL string `json:"speech_url"`
+		PornFlag  int    `json:"porn_flag"`
+		PornScore int    `json:"porn_score"`
+	} `json:"data"`
+}
