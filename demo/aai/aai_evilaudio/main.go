@@ -17,7 +17,7 @@ func main() {
 
 	txAi = txai.New("appid", "appkey", true)
 
-	val, err := txAi.AaiEvilaudioForUrl("demo", "http://xfyun-doc.ufile.ucloud.com.cn/1534295246565459/王源.mp3")
+	val, err := txAi.AaiEvilaudioForUrl("demo", "https://ai.qq.com/cgi-bin/appdemo_ttsecho?text=欢迎使用腾讯AI。&speaker=1&volume=0&speed=100&format=3&aht=0&apc=58&download=1")
 	log.Println(err)
 	js, _ := json.Marshal(val)
 	log.Println(string(js))
